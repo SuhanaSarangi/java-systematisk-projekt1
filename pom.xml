@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- pom(project object model), .xml(extensible markup language): file type
+
+  This file is an important part of Java projects which are based on Maven. It contains information
+  about the settings for the project and the configuration details used by Maven. Ex: dependencies,
+  plugins, properties etc.
+
+  Maven is a tool used to build and manage Java projects.-->
+
+<!-- Project metadata -->
+<!-- xml namespace and schema locations -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+    <modelVersion>4.0.0</modelVersion> <!-- POM version 4.0.0 -->
+    <groupId>org.example</groupId>  <!-- owner organisation  -->
+    <artifactId>java-systematisk-projekt1</artifactId>  <!-- project details -->
+    <version>1.0-SNAPSHOT</version>
+    <name>java-systematisk-projekt1</name>
+    <packaging>war</packaging> <!-- web application archive: file format used to package the web application -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- Encoding language used is UTF-8 -->
+        <maven.compiler.target>11</maven.compiler.target>  <!-- Maven version -->
+        <maven.compiler.source>11</maven.compiler.source>
+        <junit.version>5.10.2</junit.version> <!-- JUnit is a testing framework for Java -->
+        <jersey.version>3.0.4</jersey.version> <!-- Jersey is a framework for RESTful web application in Java -->
+    </properties>
+
+    <!-- List of libraries and framework the project depends on. Maven downloads some of these
+    automatically from a repository. -->
+    <dependencies>
+
+        <!-- Jakarta EE API dependency -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>9.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Jersey Test Framework and JUnit dependency. Annotations and assertions belong here. -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework</groupId>
+            <artifactId>jersey-test-framework-core</artifactId>
+            <version>${jersey.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+            <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+            <version>${jersey.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.15.2.0</version> <!-- Use the latest stable version -->
+        </dependency>
+    </dependencies>
+
+    <!-- Plugins - used to perform certain specific tasks -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

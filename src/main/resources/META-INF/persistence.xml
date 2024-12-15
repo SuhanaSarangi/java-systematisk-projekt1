@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- standalone=yes means that all the required resources for this project are defined in this xml file.-->
+
+<!-- JPA is used for managing the relational databases. This is a configuration file used by
+the Java Persistence API (JPA) to define a persistence unit, which is a set of entities that are
+managed together. The file specifies how the JPA should interact with the database,
+(database connection settings and entities involved).-->
+
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <!-- The transaction-type is JTA means the database activities like creating EntityFactoryManager,EntityManager,
+    committing changes and closing the connections are done automatically. In this project, we're using GlassFish
+    as the external web server and the Derby database, already integrated in the GlassFish. I realise am still
+    only skin-deep in this concept.-->
+
+    <persistence-unit name="default" transaction-type="JTA">
+        <jta-data-source>jdbc/__default</jta-data-source>
+        <properties>
+            <!-- Three properties of the JPA for making database tables -->
+            <!-- Tables are auto-generated-->
+            <!-- Eclipselink is jpa provider-->
+            <!-- Data generated from the Movie entity-->
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+</persistence>
