@@ -19,7 +19,7 @@ import java.util.List;
  * @version 1.0
  */
 
-@ApplicationScoped // Annotation of CDI bean, makes the class A singleton. Class can be injected into other classes.
+@ApplicationScoped // Annotation of CDI bean, makes the class a singleton. Class can be injected into other classes.
 @Transactional // Annotation ensures that the methods within the class are executed in a transactional context.
 // The transaction will be committed if a method executes successfully and rolled back if an exception is thrown.
 public class MovieRepository {
@@ -38,7 +38,7 @@ public class MovieRepository {
         String sql = "select * from movieData";
         // Create a native query using 'EntityManager'.
         Query query = entityManager.createNativeQuery(sql, Movie.class);
-        // Create a 'movies' List of all the movie data a as result of the query.
+        // Create a 'movies' List of all the movie data as a result of the query.
         List<Movie> movies = query.getResultList();
         return movies; // Return 'movies' List
     }
@@ -90,8 +90,8 @@ public class MovieRepository {
 
     public void deleteMovieById(Long id) {
         // Use of the EntityManager to find a Movie object by its ID.
-        Movie movieDelete = entityManager.find(Movie.class, id);
+        Movie movieToDelete = entityManager.find(Movie.class, id);
         // Use of the EntityManager to remove the found Movie object from the database.
-        entityManager.remove(movieDelete);
+        entityManager.remove(movieToDelete);
     }
 }

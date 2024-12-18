@@ -18,6 +18,6 @@ public class HelloResource {
     @GET // Annotation that the method handles HTTP GET requests.
     @Produces("text/plain") // Annotation that response is a text.
     public String hello() {
-        return "This is Overall Java Project #3!";
+        return "This is my Overall Java Project #3!";
     }
 }

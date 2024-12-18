@@ -20,10 +20,11 @@ managed together. The file specifies how the JPA should interact with the databa
     <persistence-unit name="default" transaction-type="JTA">
         <jta-data-source>jdbc/__default</jta-data-source>
         <properties>
-            <!-- Three properties of the JPA for making database tables -->
-            <!-- Tables are auto-generated-->
-            <!-- Eclipselink is jpa provider-->
-            <!-- Data generated from the Movie entity-->
+            <!-- Three properties of the JPA for making database tables, with the help of EclipseLink.
+             ddl: data definition language-->
+            <!-- create-tables: Tables are auto-generated in the database-->
+            <!-- database: Commands for changes will be directly executed in the table-->
+            <!-- create: Database created when the persistence unit is deployed-->
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>

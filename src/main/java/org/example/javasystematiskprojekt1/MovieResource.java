@@ -38,14 +38,14 @@ public class MovieResource {
 
     @GET // Annotation that the method handles HTTP GET requests.
     @Produces(MediaType.APPLICATION_JSON) // Annotation that response data is in JSON format.
-    public Response getMovie() {
+    public Response getMovies() {
         /*
         Declaration of the 'movies' list to hold Movie entities. We assign the value by calling the method
         'findAllMovies()' from the 'movieRepository'.
          */
         List<Movie> movies = movieRepository.findAllMovies();
         // Check for null
-        if (movies == null) {
+        if (movies == null || movies.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND) // Return 404 response
                     .entity("Empty repository!") // Attach a message
                     .build(); // Build the response object
